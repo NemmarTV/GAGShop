@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <form id="loginForm">
+        <h2>Admin Login</h2>
+
+        <input type="text" id="username" placeholder="Enter admin username" required /><br />
+
+        <input type="password" id="password" placeholder="Password (fake)" required /><br />
+
+        <div class="options">
+            <label><input type="checkbox" id="showPassword" /> Show Password</label>
+            <label><input type="checkbox" id="rememberMe" /> Remember Me</label>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <a href="#" id="forgotPassword">Forgot password?</a>
+    </form>
+
+    <script>
+        const USERS = {
+            "rasec": "pass123",
+            "admin2": "adminpass",
+            "nemmar": "nemmar321"
+        };
+
+        // Auto-login if remembered
+        window.onload = () => {
+            const savedUser = localStorage.getItem("rememberedUser");
+            if (savedUser && USERS[savedUser]) {
+                localStorage.setItem("loggedInAdmin", savedUser);
+                window.location.href = "dashboard.html";
+            }
+        };
+
+        document.getElementById("showPassword").addEventListener("change", function() {
+            const pwd = document.getElementById("password");
+            pwd.type = this.checked ? "text" : "password";
+        });
+
+        document.getElementById("forgotPassword").addEventListener("click", e => {
+            e.preventDefault();
+            alert("Forgot password is simulated. Please contact your system administrator.");
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const user = document.getElementById("username").value.trim();
+            const pass = document.getElementById("password").value.trim();
+            const rememberMe = document.getElementById("rememberMe").checked;
+
+            if (USERS[user] && USERS[user] === pass) {
+                localStorage.setItem("loggedInAdmin", user);
+                if (rememberMe) {
+                    localStorage.setItem("rememberedUser", user);
+                } else {
+                    localStorage.removeItem("rememberedUser");
+                }
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Invalid username or password.");
+            }
+        });
+    </script>
+</body>
+</html>
