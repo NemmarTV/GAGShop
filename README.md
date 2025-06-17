@@ -1,4 +1,9 @@
-# GAGShop
-Grow a Garden Online shop
+# Grow A Garden - Online Shop
 
-https://nemmartv.github.io/GAGShop/
+Website: nemmartv.github.io/GAGShop/
+Author: Nemmar Campos
+CP#: 09925706696
+
+Any Question about the website you can contact me Via FB
+Facebook.com/AnonNemmars
+
