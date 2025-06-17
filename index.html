@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Shop Storefront</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+    <h1>Shop Products</h1>
+
+    <div id="products"></div>
+
+    <script>
+        const fbAccount = "NemmarSabandoCampos";
+
+        const productsDiv = document.getElementById("products");
+
+        function renderProducts() {
+            const products = JSON.parse(localStorage.getItem("allProducts") || "[]");
+
+            productsDiv.innerHTML = "";
+
+            products.forEach((p, i) => {
+                const likedKey = `like_${i}`;
+                const dislikedKey = `dislike_${i}`;
+                const liked = localStorage.getItem(likedKey);
+                const disliked = localStorage.getItem(dislikedKey);
+
+                const el = document.createElement("div");
+                el.className = "product";
+                el.innerHTML = `
+                    <img src="${p.image}" alt="${p.name}" />
+                    <h3>${p.name}</h3>
+                    <p>Price: ₱${p.price}</p>
+                    <p>Reseller: ${p.reseller}</p>
+                    <a href="https://m.me/${fbAccount.replace(/ /g, '')}" target="_blank" rel="noopener noreferrer">Message Seller</a><br />
+                    <button onclick="like(${i})" ${liked ? "disabled" : ""}>👍 Like (${p.likes})</button>
+                    <button onclick="dislike(${i})" ${disliked ? "disabled" : ""}>👎 Dislike (${p.dislikes})</button>
+                `;
+
+                productsDiv.appendChild(el);
+            });
+        }
+
+        window.like = function(i) {
+            const products = JSON.parse(localStorage.getItem("allProducts"));
+            const key = `like_${i}`;
+            if (!localStorage.getItem(key)) {
+                products[i].likes += 1;
+                localStorage.setItem(key, true);
+                localStorage.setItem("allProducts", JSON.stringify(products));
+                renderProducts();
+            }
+        };
+
+        window.dislike = function(i) {
+            const products = JSON.parse(localStorage.getItem("allProducts"));
+            const key = `dislike_${i}`;
+            if (!localStorage.getItem(key)) {
+                products[i].dislikes += 1;
+                localStorage.setItem(key, true);
+                localStorage.setItem("allProducts", JSON.stringify(products));
+                renderProducts();
+            }
+        };
+
+        renderProducts();
+    </script>
+</body>
+</html>
