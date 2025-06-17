@@ -4,343 +4,374 @@
     <meta charset="UTF-8" />
     <title>Admin Dashboard</title>
     <style>
-      /* Basic layout styles for header and sidebar menu */
-      body {
-        display: flex;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        min-height: 100vh;
-        background-color: #f8f8f8;
-      }
-
-      /* Fixed header on top */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        background-color: #667eea;
-        color: white;
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
-        font-size: 24px;
-        font-weight: 700;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      }
-
-      /* Sidebar fixed under header */
-      nav {
-        position: fixed;
-        top: 60px; /* below header */
-        left: 0;
-        width: 220px;
-        bottom: 0;
-        background-color: #2c2f4a;
-        padding-top: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        overflow-y: auto;
-      }
-
-      nav a {
-        color: #ddd;
-        text-decoration: none;
-        padding: 12px 20px;
-        font-weight: 600;
-        transition: background-color 0.3s;
-      }
-
-      nav a:hover,
-      nav a.active {
-        background-color: #667eea;
-        color: white;
-      }
-
-      /* Main content area */
-      main {
-        margin-left: 220px;
-        margin-top: 60px;
-        padding: 20px;
-        flex-grow: 1;
-        min-height: calc(100vh - 60px);
-        overflow-y: auto;
-      }
-
-      /* Top bar inside main for welcome and logout */
-      #topBar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding: 10px 15px;
-        background: #fff;
-        border-radius: 6px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-
-      #logoutBtn {
-        padding: 6px 12px;
-        background-color: #d9534f;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      #logoutBtn:hover {
-        background-color: #c9302c;
-      }
-
-      /* Form styling */
-      form {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        max-width: 400px;
-      }
-
-      form input[type="text"],
-      form input[type="number"],
-      form input[type="file"] {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-        box-sizing: border-box;
-      }
-
-      form button {
-        background-color: #667eea;
-        color: white;
-        border: none;
-        padding: 12px;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: 700;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 10px;
-        transition: background-color 0.3s ease;
-      }
-
-      form button:hover {
-        background-color: #5563c1;
-      }
-
-      /* Products container */
-      #adminProducts {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-top: 15px;
-      }
-
-      /* Each product card */
-      .product {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        width: 220px;
-        padding: 15px;
-        box-sizing: border-box;
-        text-align: center;
-      }
-
-      .product img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 6px;
-      }
-
-      /* Responsive for small screens */
-      @media (max-width: 700px) {
+        /* Basic layout styles for header and sidebar menu */
         body {
-          flex-direction: column;
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #f8f8f8;
         }
-        nav {
-          position: relative;
-          width: 100%;
-          height: auto;
-          flex-direction: row;
-          justify-content: space-around;
-          padding: 10px 0;
-          top: 0;
-          box-shadow: none;
-        }
-        main {
-          margin-left: 0;
-          margin-top: 10px;
-          padding: 10px;
-          min-height: auto;
-        }
+
+        /* Fixed header on top */
         header {
-          position: relative;
-          height: auto;
-          padding: 15px 20px;
-          text-align: center;
-          font-size: 28px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: #039e10;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 15px;
+            font-weight: 700;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+
+        /* Sidebar fixed under header */
+        nav {
+            position: fixed;
+            top: 60px; /* below header */
+            left: 0;
+            width: 220px;
+            bottom: 0;
+            background-color: #2c2f4a;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #667eea;
+            color: white;
+        }
+
+        /* Main content area */
+        main {
+            margin-left: 220px;
+            margin-top: 60px;
+            padding: 20px;
+            flex-grow: 1;
+            min-height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        /* Top bar inside main for welcome and logout */
         #topBar {
-          flex-direction: column;
-          gap: 10px;
-          text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-      }
+
+        #logoutBtn {
+            padding: 6px 12px;
+            background-color: #d9534f;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #logoutBtn:hover {
+            background-color: #c9302c;
+        }
+
+        /* Form styling */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 400px;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #5563c1;
+        }
+
+        /* Products container */
+        #adminProducts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        /* Each product card */
+        .product {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 220px;
+            padding: 15px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .deleteBtn {
+            background-color: #d9534f;
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 6px 12px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .deleteBtn:hover {
+            background-color: #c9302c;
+        }
+
+        /* Preview Image Area */
+        #imagePreview {
+            margin-top: 20px;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+        #imagePreview img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    My Admin Dashboard
-</header>
+    <!-- HEADER -->
+    <header>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="images/logo.png" alt="Logo" style="height: 40px; width: 40px; border-radius: 8px;" />
+            <h1>Grow a Garden - Online Shop</h1>
+        </div>
+    </header>
 
-<nav>
-    <a href="dashboard.html" class="active">Dashboard</a>
-    <a href="#addProductSection" id="menuAddProduct">Add Product</a>
-    <a href="#yourProductsSection" id="menuYourProducts">Your Products</a>
-</nav>
+    <!-- SIDEBAR -->
+    <nav>
+        <a href="dashboard.html" class="active">Add Product</a>
+        <a href="index.html">Shop Products</a>
+    </nav>
 
-<main>
-    <div id="topBar">
-        <span id="welcome"></span>
-        <button id="logoutBtn">Logout</button>
-    </div>
+    <!-- MAIN CONTENT -->
+    <main>
+        <div id="topBar">
+            <div>Welcome, <span id="username"></span></div>
+            <button id="logoutBtn">Logout</button>
+        </div>
 
-    <section id="addProductSection">
-      <h2>Add New Product</h2>
-      <form id="productForm">
-          <input type="text" placeholder="Product Name" id="productName" required />
-          <input type="number" placeholder="Price (₱)" id="productPrice" required />
-          <input type="text" placeholder="Reseller Name" id="reseller" required />
-          <input type="file" id="imageFile" accept="image/*" required />
-          <button type="submit">Add Product</button>
-      </form>
-    </section>
+        <!-- Product form -->
+        <h2>Add New Product</h2>
+        <form id="productForm">
+            <input type="text" id="name" placeholder="Product Name" required />
+            <input type="number" id="price" placeholder="Price" required />
+            <input type="text" id="reseller" placeholder="Reseller Name" required />
+            <input type="text" id="fbUsername" placeholder="Facebook Username" />
+            <input type="text" id="robloxUsername" placeholder="Roblox Username" /> <!-- Added Roblox Username -->
+            <input type="file" id="image" accept="image/*" required />
+            <button type="submit">Add Product</button>
+        </form>
 
-    <section id="yourProductsSection" style="margin-top:40px;">
-      <h3>Your Products:</h3>
-      <div id="adminProducts"></div>
-    </section>
-</main>
+        <!-- Image Preview Section -->
+        <div id="imagePreview"></div>
 
-<script>
-    // Check login
-    const admin = localStorage.getItem("loggedInAdmin");
-    if (!admin) {
-        alert("You must log in first.");
-        window.location.href = "login.html";
-    }
+        <div id="adminProducts">
+            <h2>Added Products</h2>
+            <!-- Product cards will be dynamically added here -->
+        </div>
+    </main>
 
-    document.getElementById("welcome").textContent = `Logged in as: ${admin}`;
+    <script>
+        // Handle logout
+        document.getElementById("logoutBtn").addEventListener("click", function() {
+            localStorage.removeItem("loggedInAdmin");
+            window.location.href = "login.html"; // Redirect to login page
+        });
 
-    // Logout button
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-        localStorage.removeItem("loggedInAdmin");
-        localStorage.removeItem("rememberedUser");
-        window.location.href = "login.html";
-    });
+        // Handling product form submission
+        document.getElementById("productForm").addEventListener("submit", function(e) {
+            e.preventDefault();
 
-    // Products storage helpers
-    function getAllProducts() {
-        return JSON.parse(localStorage.getItem("allProducts") || "[]");
-    }
+            const name = document.getElementById("name").value;
+            const price = document.getElementById("price").value;
+            const reseller = document.getElementById("reseller").value;
+            const fbUsername = document.getElementById("fbUsername").value;
+            const robloxUsername = document.getElementById("robloxUsername").value; // Get Roblox Username
+            const imageInput = document.getElementById("image");
 
-    function saveAllProducts(products) {
-        localStorage.setItem("allProducts", JSON.stringify(products));
-    }
+            const loggedInUser = localStorage.getItem("loggedInAdmin");
+            if (!loggedInUser) {
+                alert("You must log in to add products.");
+                window.location.href = "login.html"; // Redirect to login if not logged in
+                return;
+            }
 
-    // Render admin's products
-    function renderAdminProducts() {
-        const all = getAllProducts();
-        const own = all.filter(p => p.owner === admin);
-        const container = document.getElementById("adminProducts");
-        container.innerHTML = "";
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const imageBase64 = event.target.result;
 
-        if (own.length === 0) {
-            container.innerHTML = "<p>No products yet.</p>";
-            return;
+                    const newProduct = {
+                        name,
+                        price,
+                        reseller,
+                        fbUsername,
+                        robloxUsername, // Save the Roblox Username
+                        image: imageBase64,
+                        likes: 0,
+                        dislikes: 0,
+                        owner: loggedInUser // Store the logged-in user as the product owner
+                    };
+
+                    // Get all products from localStorage and add the new one
+                    const allProducts = JSON.parse(localStorage.getItem("allProducts") || "[]");
+                    allProducts.push(newProduct);
+                    localStorage.setItem("allProducts", JSON.stringify(allProducts));
+
+                    // Clear form fields
+                    document.getElementById("productForm").reset();
+
+                    alert("Product added successfully!");
+                    loadProducts(); // Reload products to show the new one
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            }
+        });
+
+        // Function to load and display products from localStorage
+        function loadProducts() {
+            const loggedInUser = localStorage.getItem("loggedInAdmin");
+
+            if (!loggedInUser) {
+                alert("You must log in to see products.");
+                window.location.href = "login.html"; // Redirect to login if not logged in
+                return;
+            }
+
+            const products = JSON.parse(localStorage.getItem("allProducts") || "[]");
+            const productsContainer = document.getElementById("adminProducts");
+            productsContainer.innerHTML = ""; // Clear current products
+
+            // Filter products to show only those owned by the logged-in user
+            const userProducts = products.filter(product => product.owner === loggedInUser);
+
+            // Display only products that belong to the logged-in user
+            userProducts.forEach((product, index) => {
+                const productCard = document.createElement("div");
+                productCard.classList.add("product");
+
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h4 onclick="showImagePreview('${product.image}')">${product.name}</h4>
+                    <p>Price: $${product.price}</p>
+                    <p>Reseller: ${product.reseller}</p>
+                    <p>Facebook: ${product.fbUsername || "Not available"}</p>
+                    <p>Roblox: ${product.robloxUsername || "Not available"}</p> <!-- Display Roblox Username -->
+                    <button class="deleteBtn" onclick="deleteProduct(${index})">Delete</button>
+                `;
+
+                productsContainer.appendChild(productCard);
+            });
         }
 
-        own.forEach(p => {
-            container.innerHTML += `
-                <div class="product">
-                    <img src="${p.image}" alt="${p.name}" />
-                    <p><strong>${p.name}</strong> - ₱${p.price}</p>
-                    <p>Reseller: ${p.reseller}</p>
-                </div>
-            `;
-        });
-    }
+        // Function to show the image when product name is clicked
+        function showImagePreview(imageUrl) {
+            const imagePreview = document.getElementById("imagePreview");
+            imagePreview.innerHTML = `<img src="${imageUrl}" alt="Product Image">`;
 
-    // Convert uploaded image to base64 URL
-    function getBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-            reader.readAsDataURL(file);
-        });
-    }
-
-    // Handle new product submission
-    document.getElementById("productForm").addEventListener("submit", async function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById("productName").value.trim();
-        const price = parseFloat(document.getElementById("productPrice").value);
-        const reseller = document.getElementById("reseller").value.trim();
-        const imageFile = document.getElementById("imageFile").files[0];
-
-        if (!imageFile) {
-            alert("Please select an image file.");
-            return;
+            // Update the file input with the selected image file (simulate file selection)
+            const fileInput = document.getElementById("image");
+            const file = dataURLtoFile(imageUrl, "selected-image.jpg");
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            fileInput.files = dataTransfer.files;
         }
 
-        const imageBase64 = await getBase64(imageFile);
+        // Helper function to convert dataURL to file
+        function dataURLtoFile(dataURL, filename) {
+            const arr = dataURL.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while(n--) u8arr[n] = bstr.charCodeAt(n);
+            return new File([u8arr], filename, { type: mime });
+        }
 
-        const newProduct = {
-            name,
-            price,
-            reseller,
-            image: imageBase64,
-            likes: 0,
-            dislikes: 0,
-            owner: admin
-        };
+        // Function to delete a product
+        function deleteProduct(index) {
+            const allProducts = JSON.parse(localStorage.getItem("allProducts") || "[]");
+            allProducts.splice(index, 1); // Remove product from the array
+            localStorage.setItem("allProducts", JSON.stringify(allProducts));
+            loadProducts(); // Reload products to reflect the change
+        }
 
-        const all = getAllProducts();
-        all.push(newProduct);
-        saveAllProducts(all);
-
-        renderAdminProducts();
-
-        this.reset();
-    });
-
-    renderAdminProducts();
-
-    // Smooth scroll for menu links
-    document.getElementById("menuAddProduct").addEventListener("click", e => {
-      e.preventDefault();
-      document.getElementById("addProductSection").scrollIntoView({ behavior: "smooth" });
-    });
-
-    document.getElementById("menuYourProducts").addEventListener("click", e => {
-      e.preventDefault();
-      document.getElementById("yourProductsSection").scrollIntoView({ behavior: "smooth" });
-    });
-</script>
+        // Load the username and products when the page loads
+        window.onload = function() {
+            const loggedInUser = localStorage.getItem("loggedInAdmin");
+            if (!loggedInUser) {
+                alert("You must log in to access the dashboard.");
+                window.location.href = "login.html"; // Redirect to login page
+                return;
+            }
+            document.getElementById("username").innerText = loggedInUser;
+            loadProducts();
+        }
+    </script>
 
 </body>
 </html>
