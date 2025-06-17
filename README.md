@@ -1,6 +1,6 @@
 # Grow A Garden - Online Shop
 
-Website: nemmartv.github.io/GAGShop/
+Website: https://nemmartv.github.io/GAGShop/
 Author: Nemmar Campos
 CP#: 09925706696
 
